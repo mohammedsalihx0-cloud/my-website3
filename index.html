@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قصة حب تفاعلية 💖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            padding: 30px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 30px rgba(255, 182, 193, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .scene-content {
+            font-size: 2.2rem;
+            line-height: 1.6;
+            margin-bottom: 50px;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            border-radius: 15px;
+            background-color: rgba(255, 182, 193, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.4rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            min-width: 150px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transform-origin: center center;
+        }
+        
+        /* أزرار على شكل قلب - بدون نص */
+        .heart-btn {
+            width: 100px;
+            height: 100px;
+            min-width: 100px;
+            padding: 0;
+            border-radius: 50%;
+            background-color: #ff6b9d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            border: 4px solid #ffb6c1;
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .heart-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            background-color: #ff4081;
+            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.4);
+            animation: none;
+        }
+        
+        .pink-btn {
+            background-color: #ffb6c1;
+            color: #000;
+        }
+        
+        .blue-btn {
+            background-color: #87CEEB;
+            color: #000;
+        }
+        
+        .green-btn {
+            background-color: #98FB98;
+            color: #000;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 182, 193, 0.4);
+        }
+        
+        /* تأثيرات التنعوج عند الضغط */
+        .btn:active {
+            animation: wiggle 0.3s ease-in-out;
+        }
+        
+        @keyframes wiggle {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(5deg) scale(0.95); }
+            50% { transform: rotate(-5deg) scale(0.9); }
+            75% { transform: rotate(3deg) scale(0.95); }
+            100% { transform: rotate(0deg) scale(1); }
+        }
+        
+        .scene-image {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        .scene-image:active {
+            animation: bounce 0.5s;
+        }
+        
+        @keyframes bounce {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        /* تأثيرات خاصة */
+        .pulse-effect {
+            animation: pulse 0.5s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            from { transform: scale(1); text-shadow: 0 0 5px #ffb6c1; }
+            to { transform: scale(1.05); text-shadow: 0 0 15px #ff6b9d; }
+        }
+        
+        .crazy-effect {
+            animation: shake 0.5s infinite, colorChange 2s infinite;
+        }
+        
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
+        @keyframes colorChange {
+            0% { color: #ffb6c1; }
+            25% { color: #ff6b9d; }
+            50% { color: #ff9aae; }
+            75% { color: #ffccd5; }
+            100% { color: #ffb6c1; }
+        }
+        
+        /* تأثيرات البريق على الأزرار */
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0) 80%
+            );
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+        
+        .btn:hover::after {
+            transform: rotate(45deg) translate(20px, 20px);
+        }
+        
+        .click-counter {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255, 182, 193, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 1rem;
+            color: #ffb6c1;
+        }
+        
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .falling-btn {
+            position: absolute;
+            animation: falling 2s ease-in forwards;
+            z-index: 100;
+        }
+        
+        @keyframes falling {
+            0% { 
+                transform: translateY(0) rotate(0deg); 
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(100vh) rotate(360deg); 
+                opacity: 0;
+            }
+        }
+        
+        /* تخصيصات المشهد الأخير */
+        .love-percentage {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #ff6b9d;
+            text-shadow: 0 0 20px #ff4081;
+            margin: 20px 0;
+            animation: numberPulse 0.5s infinite alternate;
+        }
+        
+        @keyframes numberPulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        
+        .percentage-container {
+            background: linear-gradient(45deg, #ff0066, #ff66b2);
+            padding: 20px;
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 30px rgba(255, 0, 102, 0.5);
+        }
+        
+        .percentage-bar {
+            width: 100%;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+            border: 2px solid #ff6b9d;
+        }
+        
+        .percentage-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff0066, #ff66b2);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .scene-content {
+                font-size: 1.6rem;
+                min-height: 140px;
+                margin-bottom: 40px;
+                padding: 20px;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 1.2rem;
+                min-width: 130px;
+            }
+            
+            .heart-btn {
+                width: 80px;
+                height: 80px;
+                min-width: 80px;
+                font-size: 2.8rem;
+            }
+            
+            .scene-image {
+                font-size: 4rem;
+                margin-bottom: 20px;
+            }
+            
+            .love-percentage {
+                font-size: 2.5rem;
+            }
+            
+            .percentage-container {
+                padding: 15px;
+                margin: 15px 0;
+            }
+            
+            .click-counter {
+                font-size: 0.9rem;
+                padding: 4px 12px;
+                top: 5px;
+                right: 5px;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .scene-content {
+                font-size: 1.4rem;
+                min-height: 120px;
+                margin-bottom: 30px;
+                padding: 15px;
+            }
+            
+            .scene-image {
+                font-size: 3.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .heart-btn {
+                width: 70px;
+                height: 70px;
+                min-width: 70px;
+                font-size: 2.5rem;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+                font-size: 1.1rem;
+                min-width: 120px;
+            }
+            
+            .love-percentage {
+                font-size: 2rem;
+            }
+            
+            .percentage-container {
+                padding: 12px;
+            }
+            
+            .percentage-bar {
+                height: 25px;
+            }
+            
+            .buttons-container {
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .scene-content {
+                font-size: 1.3rem;
+                min-height: 110px;
+                padding: 12px;
+            }
+            
+            .heart-btn {
+                width: 65px;
+                height: 65px;
+                min-width: 65px;
+                font-size: 2.3rem;
+            }
+            
+            .btn {
+                padding: 8px 20px;
+                font-size: 1rem;
+                min-width: 110px;
+            }
+            
+            .love-percentage {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="click-counter" id="click-counter">ضغطات: 0</div>
+    
+    <div class="container">
+        <div class="scene-image" id="scene-image">💖</div> <!-- قلب في الأعلى -->
+        <div class="scene-content" id="scene-text">
+            انت طيبه
+        </div>
+        
+        <div class="buttons-container" id="buttons-container">
+            <!-- سيتم إضافة الأزرار ديناميكيًا حسب المشهد -->
+        </div>
+        
+        <!-- عناصر النسبة المئوية (ستظهر فقط في المشهد الأخير) -->
+        <div id="percentage-container" class="percentage-container" style="display: none;">
+            <div id="love-percentage" class="love-percentage">0%</div>
+            <div class="percentage-bar">
+                <div id="percentage-fill" class="percentage-fill"></div>
+            </div>
+            <div id="percentage-message" style="font-size: 1.5rem; margin-top: 10px;"></div>
+        </div>
+    </div>
+    
+    <div class="particles-container" id="particles-container"></div>
+
+    <script>
+        // تعريف المشاهد الجديدة
+        const scenes = {
+            // المشهد الأول: انت طيبه + قلب
+            1: {
+                text: "انت طيبه",
+                emoji: "💖", // قلب
+                buttons: [
+                    {
+                        emoji: "❤️", // قلب للزر
+                        nextScene: 2,
+                        isHeartButton: true,
+                        onClick: function() { 
+                            createHearts(8); 
+                            setTimeout(() => {
+                                loadScene(2);
+                            }, 500);
+                        }
+                    }
+                ],
+                onLoad: function() { createHearts(5); }
+            },
+            
+            // المشهد الثاني: هلووووو بطتي
+            2: {
+                text: "هلووووو بطتي",
+                emoji: "🐥",
+                buttons: [
+                    {
+                        emoji: "❤️", // قلب للزر
+                        nextScene: 3,
+                        isHeartButton: true,
+                        onClick: function() { 
+                            createDucks(8); 
+                            setTimeout(() => {
+                                loadScene(3);
+                            }, 500);
+                        }
+                    }
+                ],
+                onLoad: function() { createDucks(5); }
+            },
+            
+            // المشهد الثالث: عندي سؤال
+            3: {
+                text: "عندي سؤال...",
+                emoji: "❓",
+                buttons: [
+                    {
+                        text: "شنو هو؟",
+                        nextScene: 4,
+                        onClick: function() { 
+                            createQuestionMarks(10); 
+                            setTimeout(() => {
+                                loadScene(4);
+                            }, 500);
+                        }
+                    }
+                ],
+                onLoad: function() { createQuestionMarks(7); }
+            },
+            
+            // المشهد الرابع: تحبيني؟
+            4: {
+                text: "تحبيني؟",
+                emoji: "💘",
+                buttons: [
+                    {
+                        text: "اي ❤️",
+                        nextScene: 5,
+                        onClick: function() { 
+                            createHearts(20);
+                            setTimeout(() => {
+                                loadScene(5);
+                            }, 800);
+                        }
+                    },
+                    {
+                        text: "لا 🙁",
+                        nextScene: 6,
+                        onClick: function() { 
+                            createTears(15);
+                            setTimeout(() => {
+                                loadScene(6);
+                            }, 800);
+                        }
+                    }
+                ],
+                onLoad: function() { createHearts(8); }
+            },
+            
+            // المشهد الخامس: اني هم احبج
+            5: {
+                text: "اني هم احبج ❤️",
+                emoji: "💖",
+                buttons: [
+                    {
+                        text: "❤️",
+                        nextScene: 1,
+                        isHeartButton: true,
+                        onClick: function() { 
+                            createConfetti(30); 
+                            setTimeout(() => {
+                                loadScene(1);
+                            }, 800);
+                        }
+                    }
+                ],
+                onLoad: function() { 
+                    createHearts(25);
+                    document.body.style.backgroundColor = "#1a0000";
+                }
+            },
+            
+            // المشهد السادس: يا جذابه دوسي اي
+            6: {
+                text: "يا جذابه دوسي اي 😘",
+                emoji: "💃",
+                buttons: [
+                    {
+                        text: "اي 💖",
+                        nextScene: 7, // تغيير ليدخل المشهد الجديد
+                        onClick: function() { 
+                            createHearts(15);
+                            setTimeout(() => {
+                                loadScene(7);
+                            }, 800);
+                        }
+                    },
+                    {
+                        text: "لا",
+                        nextScene: 6,
+                        onClick: function(btnElement) { 
+                            makeButtonFly(btnElement);
+                            createAngryFaces(5);
+                        }
+                    }
+                ],
+                onLoad: function() { 
+                    createCrazyParticles(15);
+                    document.body.style.backgroundColor = "#33001a";
+                }
+            },
+            
+            // المشهد السابع الجديد: نسبة حب تتزايد
+            7: {
+                text: "اني هم احبجج هلكد ❤️❤️❤️",
+                emoji: "💖",
+                buttons: [
+                    {
+                        text: "❤️",
+                        nextScene: 1,
+                        isHeartButton: true,
+                        onClick: function() { 
+                            createConfetti(50); 
+                            setTimeout(() => {
+                                loadScene(1);
+                            }, 1000);
+                        }
+                    }
+                ],
+                onLoad: function() { 
+                    document.body.style.backgroundColor = "#1a0000";
+                    startLovePercentage();
+                }
+            }
+        };
+        
+        // حالة التطبيق الحالية
+        let currentScene = 1;
+        let totalClicks = 0;
+        const clickCounter = document.getElementById('click-counter');
+        const particlesContainer = document.getElementById('particles-container');
+        
+        // عناصر DOM
+        const sceneTextElement = document.getElementById('scene-text');
+        const sceneImageElement = document.getElementById('scene-image');
+        const buttonsContainer = document.getElementById('buttons-container');
+        const percentageContainer = document.getElementById('percentage-container');
+        const lovePercentage = document.getElementById('love-percentage');
+        const percentageFill = document.getElementById('percentage-fill');
+        const percentageMessage = document.getElementById('percentage-message');
+        
+        // متغيرات النسبة المئوية
+        let lovePercentageValue = 0;
+        let percentageInterval;
+        let speedMultiplier = 1;
+        
+        // تحديث عداد الضغطات
+        function updateClickCounter() {
+            totalClicks++;
+            clickCounter.textContent = `ضغطات: ${totalClicks}`;
+            
+            clickCounter.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                clickCounter.style.transform = 'scale(1)';
+            }, 100);
+        }
+        
+        // تحميل المشهد
+        function loadScene(sceneNumber) {
+            currentScene = sceneNumber;
+            const scene = scenes[sceneNumber];
+            
+            // إخفاء عناصر النسبة المئوية إذا لم تكن في المشهد 7
+            if (sceneNumber !== 7) {
+                percentageContainer.style.display = 'none';
+                if (percentageInterval) {
+                    clearInterval(percentageInterval);
+                    percentageInterval = null;
+                }
+            } else {
+                percentageContainer.style.display = 'block';
+            }
+            
+            // تحديث النص والإيموجي
+            sceneTextElement.textContent = scene.text;
+            sceneImageElement.textContent = scene.emoji;
+            
+            // إزالة أي تأثيرات سابقة
+            sceneTextElement.classList.remove('pulse-effect', 'crazy-effect');
+            sceneImageElement.classList.remove('pulse-effect', 'crazy-effect');
+            
+            // تطبيق التأثيرات الخاصة
+            if (sceneNumber === 5 || sceneNumber === 7) {
+                sceneTextElement.classList.add('pulse-effect');
+                sceneImageElement.classList.add('pulse-effect');
+            } else if (sceneNumber === 6) {
+                sceneTextElement.classList.add('crazy-effect');
+                sceneImageElement.classList.add('crazy-effect');
+            }
+            
+            // إزالة الأزرار القديمة
+            buttonsContainer.innerHTML = '';
+            
+            // إضافة الأزرار الجديدة
+            if (scene.buttons) {
+                scene.buttons.forEach(button => {
+                    const buttonElement = document.createElement('button');
+                    
+                    // إذا كان زر قلب (بدون نص)
+                    if (button.isHeartButton) {
+                        buttonElement.textContent = button.emoji;
+                        buttonElement.classList.add('btn', 'heart-btn');
+                        buttonElement.title = "";
+                    } else {
+                        buttonElement.textContent = button.text;
+                        
+                        // تلوين الأزرار حسب المشهد
+                        if (sceneNumber === 4 || sceneNumber === 5 || sceneNumber === 6 || sceneNumber === 7) {
+                            if (button.text.includes('اي') || button.text.includes('❤️')) {
+                                buttonElement.classList.add('btn', 'pink-btn');
+                            } else if (button.text.includes('لا')) {
+                                buttonElement.classList.add('btn', 'blue-btn');
+                            } else {
+                                buttonElement.classList.add('btn', 'green-btn');
+                            }
+                        } else {
+                            buttonElement.classList.add('btn', 'pink-btn');
+                        }
+                    }
+                    
+                    // إضافة حدث الضغط مع تأثير التنعوج
+                    buttonElement.addEventListener('click', () => {
+                        updateClickCounter();
+                        
+                        // تأثير تنعوج للزر
+                        buttonElement.style.animation = 'none';
+                        setTimeout(() => {
+                            buttonElement.style.animation = 'wiggle 0.3s ease-in-out';
+                        }, 10);
+                        
+                        // تأثير اهتزاز للنص
+                        sceneTextElement.style.transform = 'translateX(5px)';
+                        setTimeout(() => {
+                            sceneTextElement.style.transform = 'translateX(-5px)';
+                            setTimeout(() => {
+                                sceneTextElement.style.transform = 'translateX(0)';
+                            }, 50);
+                        }, 50);
+                        
+                        // تشغيل تأثير الزر الخاص
+                        if (button.onClick) {
+                            button.onClick(buttonElement);
+                        }
+                    });
+                    
+                    buttonsContainer.appendChild(buttonElement);
+                });
+            }
+            
+            // تشغيل تأثيرات تحميل المشهد
+            if (scene.onLoad) {
+                scene.onLoad();
+            }
+        }
+        
+        // بدء نسبة الحب المتزايدة
+        function startLovePercentage() {
+            lovePercentageValue = 0;
+            speedMultiplier = 1;
+            
+            // إعادة تعيين العرض
+            lovePercentage.textContent = "0%";
+            percentageFill.style.width = "0%";
+            percentageMessage.textContent = "";
+            
+            // بدء العد
+            percentageInterval = setInterval(() => {
+                // زيادة النسبة
+                lovePercentageValue += 1000 * speedMultiplier;
+                
+                // زيادة السرعة تدريجياً
+                speedMultiplier *= 1.05;
+                
+                // تحديث العرض
+                const displayValue = Math.min(lovePercentageValue, 10000000);
+                lovePercentage.textContent = formatNumber(displayValue) + "%";
+                
+                // تحديث شريط التقدم
+                const percentage = Math.min((displayValue / 10000000) * 100, 100);
+                percentageFill.style.width = percentage + "%";
+                
+                // جسيمات إضافية كلما زادت النسبة
+                if (displayValue % 500000 === 0) {
+                    createHearts(10);
+                }
+                
+                // عند الوصول إلى 10,000,000
+                if (lovePercentageValue >= 10000000) {
+                    clearInterval(percentageInterval);
+                    lovePercentage.textContent = "10,000,000%";
+                    percentageFill.style.width = "100%";
+                    percentageMessage.textContent = "❤️ واكثر! ❤️";
+                    percentageMessage.style.color = "#ff0066";
+                    percentageMessage.style.fontWeight = "bold";
+                    percentageMessage.style.fontSize = "2rem";
+                    
+                    // تأثيرات احتفالية
+                    createConfetti(100);
+                    createHearts(50);
+                    
+                    // تغيير لون الخلفية
+                    document.body.style.backgroundColor = "#660033";
+                    
+                    // تأثير نصي
+                    sceneTextElement.textContent = "اني هم احبجج هلكد ❤️❤️❤️";
+                }
+            }, 50); // تحديث كل 50 مللي ثانية
+        }
+        
+        // تنسيق الأرقام بفواصل
+        function formatNumber(num) {
+            return num.toLocaleString('ar-EG');
+        }
+        
+        // تأثيرات الجسيمات
+        function createParticles(count, emoji, size = 20) {
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.textContent = emoji;
+                particle.classList.add('particle');
+                particle.style.fontSize = `${Math.random() * 20 + size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.opacity = '0.9';
+                
+                particlesContainer.appendChild(particle);
+                
+                const angle = Math.random() * Math.PI * 2;
+                const duration = Math.random() * 2000 + 1000;
+                
+                const animation = particle.animate([
+                    { transform: 'translate(0, 0) rotate(0deg)', opacity: 0.9 },
+                    { 
+                        transform: `translate(${Math.cos(angle) * 100}px, ${Math.sin(angle) * 100}px) rotate(${Math.random() * 360}deg)`, 
+                        opacity: 0 
+                    }
+                ], {
+                    duration: duration,
+                    easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+                });
+                
+                animation.onfinish = () => {
+                    particle.remove();
+                };
+            }
+        }
+        
+        // تأثيرات خاصة
+        function createHearts(count) {
+            createParticles(count, '❤️', 25);
+        }
+        
+        function createDucks(count) {
+            createParticles(count, '🐥', 30);
+        }
+        
+        function createTears(count) {
+            createParticles(count, '😢', 25);
+        }
+        
+        function createQuestionMarks(count) {
+            createParticles(count, '❓', 20);
+        }
+        
+        function createAngryFaces(count) {
+            createParticles(count, '😠', 25);
+        }
+        
+        function createConfetti(count) {
+            const emojis = ['🎉', '✨', '🎊', '🥳', '🎈', '💖', '❤️', '💕'];
+            for (let i = 0; i < count; i++) {
+                createParticles(1, emojis[Math.floor(Math.random() * emojis.length)], 25);
+            }
+        }
+        
+        function createCrazyParticles(count) {
+            const emojis = ['💃', '🕺', '🔥', '💥', '⚡', '🌟'];
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    createParticles(1, emojis[Math.floor(Math.random() * emojis.length)], 30);
+                }, i * 50);
+            }
+        }
+        
+        // تأثير النقر على الإيموجي
+        sceneImageElement.addEventListener('click', () => {
+            updateClickCounter();
+            
+            sceneImageElement.style.animation = 'none';
+            setTimeout(() => {
+                sceneImageElement.style.animation = 'bounce 0.5s, float 3s ease-in-out infinite';
+            }, 10);
+            
+            if (currentScene === 1) {
+                createHearts(5);
+            } else if (currentScene === 2) {
+                createDucks(5);
+            } else if (currentScene === 3) {
+                createQuestionMarks(5);
+            } else if (currentScene === 4 || currentScene === 5 || currentScene === 7) {
+                createHearts(8);
+            } else if (currentScene === 6) {
+                createCrazyParticles(5);
+            }
+        });
+        
+        // دالة لجعل الزر يطير وينعوج (للمشهد السادس)
+        function makeButtonFly(button) {
+            if (!button) return;
+            
+            const flyingBtn = button.cloneNode(true);
+            flyingBtn.classList.add('falling-btn');
+            flyingBtn.style.position = 'fixed';
+            flyingBtn.style.left = `${button.getBoundingClientRect().left}px`;
+            flyingBtn.style.top = `${button.getBoundingClientRect().top}px`;
+            flyingBtn.style.pointerEvents = 'none';
+            
+            document.body.appendChild(flyingBtn);
+            
+            setTimeout(() => {
+                if (flyingBtn.parentNode) {
+                    flyingBtn.parentNode.removeChild(flyingBtn);
+                }
+            }, 2000);
+        }
+        
+        // تحميل المشهد الأول عند بدء التشغيل
+        window.addEventListener('DOMContentLoaded', () => {
+            loadScene(1);
+        });
+        
+        // تأثيرات عشوائية في الخلفية
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                const emojis = ['✨', '🌟', '💫'];
+                createParticles(1, emojis[Math.floor(Math.random() * emojis.length)], 15);
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
